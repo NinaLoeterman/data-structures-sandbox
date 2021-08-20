@@ -70,6 +70,45 @@ class SinglyLinkedList {
     this.length++;
     return this;
   }
+
+  get(idx) {
+    if (idx < 0 || idx >= this.length) return null;
+    let counter = 0;
+    let current = this.head;
+    while (counter !== idx) {
+      current = current.next;
+      counter++;
+    }
+    return current;
+  }
+
+  set(val, idx) {
+    let foundNode = this.get(idx);
+    if (foundNode) {
+      foundNode.val = val;
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  insert(val, idx) {
+    if (idx < 0 || idx > this.length) return false;
+    if (idx === 0) return !!this.unshift(val);
+    if (idx === this.length) return !!this.push(val);
+
+    let prev = this.get(idx - 1);
+    if (prev) {
+      const newNode = new Node(val);
+      newNode.next = prev.next;
+      prev.next = newNode;
+    }
+    this.length++;
+    return true;
+  }
+
+  remove() {}
+  reverse() {}
 }
 
 const list = new SinglyLinkedList();
