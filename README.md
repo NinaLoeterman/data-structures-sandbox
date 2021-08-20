@@ -1,2 +1,3 @@
 # data_structures_sandbox
-Practice with data structures
+Practice with Data Structures
+* singly linked lists
