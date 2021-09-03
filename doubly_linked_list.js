@@ -74,23 +74,38 @@ class DoublyLinkedList {
   get = (idx) => {
     if (idx < 0 || idx >= this.length) return undefined;
     const halfway = idx < this.length / 2;
-    let current;
-    let counter;
-    if (halfway) {
-      current = this.head;
-      counter = 0;
-      while (counter !== idx) {
-        current = current.next;
-        counter++;
-      }
-    } else {
-      current = this.tail;
-      counter = this.length - 1;
-      while (counter !== idx) {
-        current = current.prev;
-        counter--;
-      }
+    let current = halfway ? this.head : this.tail;
+    let counter = halfway ? 0 : this.length - 1;
+    while (counter !== idx) {
+      current = halfway ? current.next : current.prev;
+      halfway ? counter++ : counter--;
     }
     return current;
   };
+
+  set = (idx, val) => {
+    const location = this.get(idx);
+    if (location) {
+      location.val = val;
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  insert = (idx, val) => {
+    if (idx < 0 || idx > this.length) return undefined;
+    if (idx === 0) !!this.unshift(val);
+    if (idx === this.length) !!this.push(val);
+    const newNode = new Node(val);
+    const beforeNode = this.get(idx - 1);
+    const afterNode = beforeNode.next;
+
+    (beforeNode.next = newNode), (newNode.prev = beforeNode);
+    (newNode.next = afterNode), (afterNode.prev = newNode);
+    this.length++;
+    return true;
+  };
+
+  remove = (idx) => {};
 }
