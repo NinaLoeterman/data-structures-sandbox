@@ -95,8 +95,8 @@ class DoublyLinkedList {
 
   insert = (idx, val) => {
     if (idx < 0 || idx > this.length) return undefined;
-    if (idx === 0) !!this.unshift(val);
-    if (idx === this.length) !!this.push(val);
+    if (idx === 0) return !!this.unshift(val);
+    if (idx === this.length) return !!this.push(val);
     const newNode = new Node(val);
     const beforeNode = this.get(idx - 1);
     const afterNode = beforeNode.next;
@@ -107,5 +107,17 @@ class DoublyLinkedList {
     return true;
   };
 
-  remove = (idx) => {};
+  remove = (idx) => {
+    if (idx < 0 || idx >= this.length) return undefined;
+    if (idx === 0) return !!this.shift();
+    if (idx === this.length - 1) return !!this.pop();
+
+    const removed = this.get(idx);
+    removed.prev.next = removed.next;
+    removed.next.prev = removed.prev;
+    removed.next = null;
+    removed.prev = null;
+    this.length--;
+    return removed;
+  };
 }
