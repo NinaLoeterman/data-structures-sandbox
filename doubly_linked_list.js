@@ -13,7 +13,7 @@ class DoublyLinkedList {
     this.length = 0;
   }
 
-  push = (val) => {
+  push (val) {
     const newNode = new Node(val);
     if (!this.head) {
       this.head = newNode;
@@ -27,7 +27,7 @@ class DoublyLinkedList {
     return this;
   };
 
-  pop = () => {
+  pop () {
     if (!this.head) return undefined;
     const popped = this.tail;
     if (this.length === 1) {
@@ -42,7 +42,7 @@ class DoublyLinkedList {
     return popped;
   };
 
-  shift = () => {
+  shift () {
     if (!this.head) return undefined;
     const shifted = this.head;
     if (this.length === 1) {
@@ -57,7 +57,7 @@ class DoublyLinkedList {
     return shifted;
   };
 
-  unshift = (val) => {
+  unshift (val) {
     const newNode = new Node(val);
     if (!this.head) {
       this.head = newNode;
@@ -71,7 +71,7 @@ class DoublyLinkedList {
     return this;
   };
 
-  get = (idx) => {
+  get (idx) {
     if (idx < 0 || idx >= this.length) return undefined;
     const halfway = idx < this.length / 2;
     let current = halfway ? this.head : this.tail;
@@ -83,7 +83,7 @@ class DoublyLinkedList {
     return current;
   };
 
-  set = (idx, val) => {
+  set (idx, val) {
     const location = this.get(idx);
     if (location) {
       location.val = val;
@@ -93,7 +93,7 @@ class DoublyLinkedList {
     }
   };
 
-  insert = (idx, val) => {
+  insert (idx, val) {
     if (idx < 0 || idx > this.length) return undefined;
     if (idx === 0) return !!this.unshift(val);
     if (idx === this.length) return !!this.push(val);
@@ -107,7 +107,7 @@ class DoublyLinkedList {
     return true;
   };
 
-  remove = (idx) => {
+  remove (idx) {
     if (idx < 0 || idx >= this.length) return undefined;
     if (idx === 0) return !!this.shift();
     if (idx === this.length - 1) return !!this.pop();
