@@ -4,3 +4,4 @@ Practice with Data Structures
 * doubly linked lists
 * stacks
 * queues
+* binary search trees
