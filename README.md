@@ -2,3 +2,5 @@
 Practice with Data Structures
 * singly linked lists
 * doubly linked lists
+* stacks
+* queues
