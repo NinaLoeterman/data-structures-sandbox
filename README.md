@@ -5,4 +5,4 @@ Practice with Data Structures
 * stacks
 * queues
 * binary search trees
-* heaps
+* heaps/priority queues
